@@ -19,7 +19,7 @@ const int  PATH_SIZE_CUTOFF = 15;
 //penalty the car in front/left/right too close
 const double LANE_CHANGE_COST_SIDE_F = 1.0;
 //penalty the car behind left/right too close
-const double LANE_CHANGE_COST_SIDE_R = .8;
+const double LANE_CHANGE_COST_SIDE_R = .6;
 
 //be careful of the track loop !!!
 const double MAX_TRACK_S = 6945.554;
@@ -31,15 +31,14 @@ const double MIN_SPEED_LIMIT = 16.0;
 
 // if the gap is less than this we consider it unsafe to turn
 const double FRONT_GAP_THRESH = 25.0;
-const double BACK_GAP_THRESH = 15.0;
+const double BACK_GAP_THRESH = 10.0;
 
-const double FRONT_BUFFER = 40;
-const double DISTANCE_BUFFER = 5.0;
-const double SPEED_BUFFER = 4.0;// 6.0;
+const double FRONT_BUFFER = 35;
+const double SPEED_BUFFER = 6.0;
 
-//tweak the penalty or reward values for making the path smoothier
-const double MID_REWARD = 0.35;
-const double TURN_PENALTY= 1.5;
+//tweak the penalty for making the turning smoothier
+const double MID_TURN_PENALTY= 1.3;
+const double TURN_PENALTY=1.4;
 
 const double EXPECTED_JERK_IN_ONE_SEC = 1.0;
 //total jerk cost weight

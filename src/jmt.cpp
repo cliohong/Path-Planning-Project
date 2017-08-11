@@ -49,10 +49,3 @@ double JMT::polyderv(vector<double> coeffs, double t){
   }
   return res;
 }
-//vector<double>JMT::differentiate(vector<double> coefs){
-//  vector<double>new_coeffs;
-//  for(int i=1;i<coefs.size();i++){
-//    new_coeffs.emplace_back((i+1)*coeffs[i]);
-//  }
-//  return new_coeffs;
-//}

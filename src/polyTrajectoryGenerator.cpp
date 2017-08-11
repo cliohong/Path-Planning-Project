@@ -24,7 +24,7 @@ PathType polyTrajectoryGenerator::update(Vehicle& myCar, vector<Vehicle>& otherC
   const double left_cost = this->costOfLaneChange(frontleft, backleft, myCar.lane_at_left);
   
   double l_jerk_cost=path_jerk_cost(myCar, PathType::TURNLEFT);
-  double total_l_cost = (left_cost + l_jerk_cost)*1.4;
+  double total_l_cost = (left_cost + l_jerk_cost)*TURN_PENALTY;
   
   
   
@@ -33,13 +33,12 @@ PathType polyTrajectoryGenerator::update(Vehicle& myCar, vector<Vehicle>& otherC
   const double right_cost = costOfLaneChange(frontright, backright, myCar.lane_at_right);
   
   double r_jerk_cost=path_jerk_cost(myCar, PathType::TURNRIGHT);
-  double total_r_cost = (right_cost + r_jerk_cost)*1.4;
+  double total_r_cost = (right_cost + r_jerk_cost)*TURN_PENALTY;
   
 
   
   double k_jerk_cost=path_jerk_cost(myCar, PathType::KEEPLANE);
-  double total_staright_cost=straight_cost*1.2 ;;//+ k_jerk_cost*0.65;
-  
+  double total_staright_cost=straight_cost*MID_TURN_PENALTY ;
   cout <<"---------------------------------------"<<endl;
   
   cout<<"| "<<"turn_left_cost"<<"  | "<<"keep_lane cost"<<"  | "<<"turn_right_cost"<<endl;
@@ -81,15 +80,15 @@ double polyTrajectoryGenerator::costOfLaneChange(const double front_gap, const d
   double cost = LANE_CHANGE_COST_SIDE_F / front_gap + LANE_CHANGE_COST_SIDE_R / back_gap; //don't need to care about cars behind us
 
   if (lane == LaneType::NONE || lane == LaneType::UNSPECIFIED) {
-    cout << " No lane to go .... \n" << endl;
+//    cout << " No lane to go .... \n" << endl;
     return MAX_COST;
   }
 
   if (front_gap < FRONT_GAP_THRESH || back_gap < BACK_GAP_THRESH) {
-
-    cout << "Warning! Tooooooo close!!!" << endl;
-    cout <<"---------------------------------------"<<endl;
-    cout << " GAP - front: " << front_gap << " back: " << back_gap << endl;
+    //debug
+//    cout << "Warning! Tooooooo close!!!" << endl;
+//    cout <<"---------------------------------------"<<endl;
+//    cout << " GAP - front: " << front_gap << " back: " << back_gap << endl;
 
     return MAX_COST;
   }
@@ -255,23 +254,5 @@ double polyTrajectoryGenerator::path_jerk_cost(Vehicle&myCar,PathType path){
     total_jerk_cost+=maxJerkCost(r_jmt, PATH_PLAN_SECONDS);
     return total_jerk_cost*TOTAL_JERK_COST_WEIGHT;
   }
-//  }else if(path ==PathType::KEEPLANE){
-//    if(myCar.front_v > MAX_SPEED_LIMIT ||myCar.front_gap > FRONT_BUFFER){
-//          target_v=MAX_SPEED_LIMIT;
-//      }else{
-//        target_v = myCar.front_v - SPEED_BUFFER;
-//      }
-//    if(target_v<MIN_SPEED_LIMIT){
-//          target_v=MIN_SPEED_LIMIT;
-//    }
-//       
-//    double target_ss = myCar.cur_state_s.pos + PATH_PLAN_SECONDS * 0.5*(target_v + myCar.cur_state_s.v);
-//    State k_target_state = {target_ss,target_v,0.0};
-//    JMT jmt_k(myCar.cur_state_s,k_target_state,PATH_PLAN_SECONDS);
-//    vector<double>k_jmt = jmt_k.coeffs;
-////    total_jerk_cost=costTotalMinJerk(k_jmt, PATH_PLAN_SECONDS);
-////    total_jerk_cost=maxJerkCost(k_jmt, PATH_PLAN_SECONDS);
-//    return total_jerk_cost*TOTAL_JERK_COST_WEIGHT;
-//  }
   return total_jerk_cost*TOTAL_JERK_COST_WEIGHT;
 }

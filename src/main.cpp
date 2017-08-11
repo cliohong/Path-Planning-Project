@@ -262,11 +262,11 @@ int main() {
               if(lanes[i]==LaneType::LEFT){
                 cout << "LEFT       ";
               }else if(lanes[i]==LaneType::MID){
-                cout << "MID       ";
+                cout << "MID        ";
               }else if (lanes[i]==LaneType::RIGHT){
-                cout << "RIGHT       ";
+                cout << "RIGHT      ";
               }else{
-                cout<<"UNKNOWN  ...";
+                cout << "NONE       ";
               }
             }
             cout << endl;
