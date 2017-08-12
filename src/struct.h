@@ -34,6 +34,7 @@ const double FRONT_GAP_THRESH = 20. ; //25.0;
 const double BACK_GAP_THRESH = 15; //20.0;
 
 const double FRONT_BUFFER = 30;
+const double HARD_FRONT_BUFFER = 15.;
 const double SPEED_BUFFER = 5.;//6.0;
 
 //tweak the penalty for making the turning smoothier
