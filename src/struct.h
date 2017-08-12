@@ -26,15 +26,15 @@ const double MAX_TRACK_S = 6945.554;
 
 // boundaries of acceptable speed of our vehicle
 const double HARD_SPEED_LIMIT = 22.352; // 50mph in m/s
-const double MAX_SPEED_LIMIT = 20.75;
-const double MIN_SPEED_LIMIT = 16.0;
+const double MAX_SPEED_LIMIT = 20.85; //20.75;
+const double MIN_SPEED_LIMIT = 17.0;
 
 // if the gap is less than this we consider it unsafe to turn
-const double FRONT_GAP_THRESH = 25.0;
-const double BACK_GAP_THRESH = 10.0;
+const double FRONT_GAP_THRESH = 20. ; //25.0;
+const double BACK_GAP_THRESH = 15; //20.0;
 
-const double FRONT_BUFFER = 35;
-const double SPEED_BUFFER = 6.0;
+const double FRONT_BUFFER = 30;
+const double SPEED_BUFFER = 5.;//6.0;
 
 //tweak the penalty for making the turning smoothier
 const double MID_TURN_PENALTY= 1.3;

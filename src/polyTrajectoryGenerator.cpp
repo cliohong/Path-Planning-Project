@@ -163,10 +163,14 @@ void polyTrajectoryGenerator::trajectory(Vehicle& car, const PathType path){
       target_v=MAX_SPEED_LIMIT;
     }else{
       target_v = car.front_v - SPEED_BUFFER;
+      if(target_v<MIN_SPEED_LIMIT){
+        target_v=MIN_SPEED_LIMIT;
+      }
     }
-    if(target_v<MIN_SPEED_LIMIT){
-      target_v=MIN_SPEED_LIMIT;
+    if(car.front_gap<15.){
+      target_v = MIN_SPEED_LIMIT-SPEED_BUFFER;
     }
+  
     target_s = car.cur_state_s.pos + PATH_PLAN_SECONDS * 0.5*(target_v + car.cur_state_s.v);
   }
   
