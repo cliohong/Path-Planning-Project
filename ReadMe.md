@@ -1,5 +1,5 @@
 
-## Path-Planning-Project  --- Highway Driving
+## Path-Planning-Project - Highway Driving
 ---
 
 ### Simulator
